@@ -37,6 +37,12 @@ function geolocate() {
         radius: position.coords.accuracy
       });
       autocomplete.setBounds(circle.getBounds());
+      google.maps.event.addListener(autocomplete, 'place_changed', function() {
+        place = autocomplete.getPlace();
+        foundLatitude = place.geometry.location.lat();
+        foundLongitude = place.geometry.location.lng();
+
+        });
     });
   }
 }
@@ -71,9 +77,8 @@ function errorQuery (argument) {
 }
 
 function submitHandler () {
-    $('.optionals').hide(function() {
+    $('.optionals').hide();
         $('#ajax-loader').show();
-    });
     inputCategory = $('#category').val();
     inputCategory = inputCategory.replace(/\s+/g, '');
     inputCategory = inputCategory.toLowerCase();
@@ -88,16 +93,83 @@ function submitHandler () {
     else
     {
         // Error message 
+        $('#ajax-loader').hide();
+        $('.optionals').show();
+        $('#category').val('');
+        
         return false;
+    }
+    var foundCity = $('#location').val();
+    if(foundCity.indexOf(',') > -1)
+    {
+        foundCity = foundCity.substring(0,foundCity.indexOf(','));
+        if(foundCity.indexOf(" ") > -1)
+        {
+            foundCity = foundCity.split(' ');
+            foundCity = foundCity[1];
+        }
     }
     $.ajax({
         method: "GET",
+        contentType: "application/json",
         url: '/category/'+categoryID+'/'+foundCity+'/'+foundLatitude+'/'+foundLongitude,
         success: function(ResponseData) 
         {
-            console.log(ResponseData);            
+            $('#ajax-loader').hide();
+            ResponseData = JSON.parse(ResponseData);
+            q = ResponseData;
+            if( parseInt(ResponseData['count']) == 0)
+            {
+                $('#noresults').show();
+                return false;
+            }
+            var start = {lat: foundLatitude, lng: foundLongitude};
+            var end = {lat: parseFloat(ResponseData['data'][0]['lat']), lng: parseFloat(ResponseData['data'][0]['lon'])};
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: foundLatitude, lng: foundLongitude},
+              zoom: 15,
+              styles:  [{featureType: "all",stylers: [{ saturation: -100 }]}]
+            });
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map
+            });
+            var request = {
+                destination: end,
+                origin: start,
+                travelMode: google.maps.TravelMode.DRIVING
+              };
+            var directionsService = new google.maps.DirectionsService();
+              directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                  // Display the route on the map.
+                  directionsDisplay.setDirections(response);
+                }
+              });
+              $('#variablecategory').text($('#category').val());
+              $('#sellerlink').attr('href',ResponseData['data'][0]['url']);
+              $('#seller').show();
+
+/*              var latlng = end;
+              geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                  if (results[1]) {
+                    map.setZoom(15);
+                    var marker = new google.maps.Marker({
+                      position: latlng,
+                      map: map
+                    });
+                    infowindow.setContent(results[1].formatted_address);
+                    infowindow.open(map, marker);
+                  } else {
+                    window.alert('No results found');
+                  }
+                } 
+            });*/
+
         },
         error : function () {
+            $('#ajax-loader').hide();
+            $('noresults').show();
         }
 
     });
@@ -118,7 +190,7 @@ $(document).ready(function(argument) {
 
     $('#submitbutton').click(submitHandler);
 
-    $("#location, #category").keyup(function (e) {
+    $("#category").keyup(function (e) {
     if (e.keyCode == 13) {
         submitHandler();
     }

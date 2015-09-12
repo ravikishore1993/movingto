@@ -89,7 +89,7 @@ $app->get('/category/:category/:city/:lta1/:lon1', function ($category,$city,$la
 				$miles = $dist * 60 * 1.1515;
 			
 
-				if ($attribute_Ad_Typ=="offer" && $miles * 1.609344<=20) 
+				if ($attribute_Ad_Typ=="offer" && $miles * 1.609344<=10) 
 				{
 					$res=array();
 					$res["title"]=$i['title'];	
@@ -134,14 +134,14 @@ $app->get('/category/:category/:city/:lta1/:lon1', function ($category,$city,$la
 							$lat2=explode(",", $geo_pin)[0];
 							$lon2=explode(",", $geo_pin)[1];
 
-							/*$theta = $lon1 - $lon2;
+							$theta = $lon1 - $lon2;
 							$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
 							$dist = acos($dist);
 							$dist = rad2deg($dist);
-							$miles = $dist * 60 * 1.1515;*/
+							$miles = $dist * 60 * 1.1515;
 						
 
-							if ($attribute_Ad_Typ=="offer") //&& $miles * 1.609344<=20) 
+							if ($attribute_Ad_Typ=="offer" && $miles*1.609344 <=10) 
 							{
 								$res=array();
 								$res["title"]=$i['title'];	

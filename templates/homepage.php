@@ -7,18 +7,20 @@
 </head>
 <body>
 	<div id="input-terms" class="top">
-		HECK SHOULD I RENT A <br><br> 
-		<span class="optionals">
-			<span>
-				<input type="text" id="category">
-			</span>
-			<span class="randomtext"> 
-				AT 
-			</span>
-			<span>
-				<input type="text" id="location" onfocus="geolocate()" placeholder="">
-			</span> ?
-		</span>	
+		HECK SHOULD I RENT A 
+		<div>
+			<span class="optionals">
+				<span>
+					<input type="text" id="category">
+				</span>
+				<span class="randomtext"> 
+					AT 
+				</span>
+				<span>
+					<input type="text" id="location" onfocus="geolocate()" placeholder="">
+				</span> ?
+			</span>	
+		</div>
 	</div>
 	<span class="optionals">
 	<div id="buttonsdiv">
@@ -27,6 +29,20 @@
 	</span>
 	<div id="ajax-loader">
 		<img src="assets/icons/ajax-loader.gif">
+	</div>
+	<div id="mapbox">
+		<div id="seller">
+			<span id="variablecategory"></span> from  <a target="blank" href="" id="sellerlink">this dealer on Quikr ?</a>
+		</div>
+		<div id="map">
+			
+		</div>
+		<div id="alternatives">
+			
+		</div>
+	</div>
+	<div id="noresults">
+		SORRY :( No Results. Try other <a href="/">location</a>
 	</div>
 </body>
 	<script type="text/javascript" src="assets/scripts/script.js"></script>

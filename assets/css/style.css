@@ -118,3 +118,49 @@ body {
 	margin-bottom: 4%;
 	text-align: center;
 }
+
+#map {
+	width: 70%;
+	margin: auto auto;
+	height: 400px;
+}
+
+#noresults {
+	width: 75%;
+	font-family: "bebas";
+	color: #fff;
+	font-size: 60px;
+	text-align: center;
+	margin: auto auto;
+	display: none;
+}
+
+#noresults a {
+	text-decoration: none;
+	color: #2980B9;
+}
+
+#noresults a:hover {
+	text-decoration: underline;
+}
+
+#mapbox {
+
+}
+
+#seller {
+	display: none;
+	min-height: 150px;
+	text-align: center;
+	font-size: 60px;
+	color: #fff;
+}
+
+#seller a {
+	text-decoration: none;
+	color: #2980B9;	
+}
+
+#seller a:hover {
+	text-decoration: underline;
+}
