@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'bebas';
+  src: url("../fonts/BebasNeue-webfont.eot");
+  src: url("../fonts/BebasNeue-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/BebasNeue-webfont.woff") format("woff"), url("../fonts/BebasNeue-webfont.ttf") format("truetype"), url("../fonts/BebasNeue-webfont.svg#BebasNeueRegular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+html {
+	border-top: 5px solid #333;
+	height: 98%;
+	margin-top: 2px;
+}
+
+body {
+	margin-top: 0;
+	font-family: "bebas";
+	background-color: #8DD8F8;
+}
+
+#input-terms {
+	font-size: 100px;
+	margin: 30px auto;
+	text-align: center;
+	color: #FFF;
+}
+
+#category {
+	border: none;
+	background-color: #8DD8F8;
+	color: #FFF;
+	font-size: 40px;
+	width: 300px;
+	border-bottom: 2px dashed white;
+	font-family: "bebas";
+	text-align: center;
+}
+
+#category:focus {
+	outline: none;
+}
+
+#location {
+	border: none;
+	background-color: #8DD8F8;
+	color: #FFF;
+	font-size: 40px;
+	width: 500px;
+	border-bottom: 2px dashed white;
+	font-family: "bebas";
+	text-align: center;
+}
+
+#location:focus {
+	outline: none;
+}
+
+.pac-icon {
+	display: none;
+}
+
+.pac-container {
+	color: #FFF;
+	background-color:  #8DD8F8;
+}
+
+.pac-item, .pac-item:hover, .pac-item-selected, .pac-item-query, .pac-matched {
+	color: #fff;
+	font-size: 30px;
+	font-family: "bebas";
+} 
+
+.pac-item:hover, .pac-item-selected {
+	background-color: #000;
+}
+
+.pac-item {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.randomtext {
+	font-size: 40px;
+}
+
+#buttonsdiv {
+	width: 400px;
+	margin: auto auto;
+	text-align: center;
+}
+
+#submitbutton {
+	width: 200px;
+	font-size: 40px;
+	padding: 3px;
+	background-color: #2980B9;
+	color: #fff;
+	font-family: "bebas";
+	border: none;    
+	-webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+}
+
+#submitbutton:focus {
+	outline: none;
+}
+
+#submitbutton:hover {
+	color: #2980B9;
+	background-color: #fff;
+	-webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+#ajax-loader {
+	margin-top: 10%;
+	margin-bottom: 4%;
+	text-align: center;
+}
