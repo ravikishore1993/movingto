@@ -1,7 +1,8 @@
-# Heck I Rent A
+# [Heck I Rent A](http://qkr.r93.in/)
 
-A minimal and attractive interface for Quikr Rental services. 
-Visit at [http://qkr.r93.in/](http://qkr.r93.in/)
+A minimal and attractive interface for Quikr Rental services.   
+Visit us at [http://qkr.r93.in/](http://qkr.r93.in/)   
+Link to the [demo video](https://youtu.be/qsxkkJiwWW0) 
 
 ## Setting up Instructions
 ### Dependencies
