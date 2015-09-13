@@ -164,3 +164,54 @@ body {
 #seller a:hover {
 	text-decoration: underline;
 }
+
+.alternativelinks {
+	width: 500px;
+	font-size: 40px;
+	display: inline;
+	margin-top: 20px;
+	color: #2980B9;	
+}
+
+#anotherdealer {
+	float: right;
+	text-align: right;
+}
+
+#alternatives {
+	width: 70%;
+	margin: auto auto;
+	display: none;
+}
+
+#wronglocation {
+	text-align: left;
+	float: left;
+}
+
+.alternativehrefs {
+	text-decoration: none;
+	color: #2980B9;	
+}
+
+.alternativehrefs:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#toomanyresults {
+	font-size: 60px;
+	text-align: center;
+	color: #fff;
+	margin-top: auto auto;
+	display: none;
+}
+
+#toomanyresults a {
+	text-decoration: none;
+	color: #2980B9;	
+}
+
+#toomanyresults a:hover {
+	text-decoration: underline;
+}

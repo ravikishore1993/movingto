@@ -1,5 +1,6 @@
 var placeSearch, autocomplete;
 var foundLatitude, foundLongitude, foundCity;
+var globaldata;
 
 var items = {
     'room' :'32' , 'house' :'32' , 'apartment' :'32', 'home' :'32' , 'flat' :'32', 'penthouse' :'32' , 'accomodation' : '32',
@@ -117,12 +118,15 @@ function submitHandler () {
         {
             $('#ajax-loader').hide();
             ResponseData = JSON.parse(ResponseData);
+            ResponseData['counter'] = 1;
+            globaldata = ResponseData;
             q = ResponseData;
             if( parseInt(ResponseData['count']) == 0)
             {
                 $('#noresults').show();
                 return false;
             }
+            $('#mapbox').show();
             var start = {lat: foundLatitude, lng: foundLongitude};
             var end = {lat: parseFloat(ResponseData['data'][0]['lat']), lng: parseFloat(ResponseData['data'][0]['lon'])};
             map = new google.maps.Map(document.getElementById('map'), {
@@ -148,6 +152,7 @@ function submitHandler () {
               $('#variablecategory').text($('#category').val());
               $('#sellerlink').attr('href',ResponseData['data'][0]['url']);
               $('#seller').show();
+              $('#alternatives').show();
 
 /*              var latlng = end;
               geocoder.geocode({'location': latlng}, function(results, status) {
@@ -195,6 +200,61 @@ $(document).ready(function(argument) {
         submitHandler();
     }
 });
+
+    $('#anotherdealerlink').click(function (e){
+        ResponseData = globaldata;
+            
+        $('#mapbox').hide();
+        if(globaldata['counter'] >= globaldata['count'])
+        {
+            $('#toomanyresults').show();
+            return false;
+        }
+        $('ajax-loader').show();
+        if( parseInt(ResponseData['count']) == 0)
+            {
+                $('#noresults').show();
+                return false;
+            }
+            var start = {lat: foundLatitude, lng: foundLongitude};
+            var end = {lat: parseFloat(ResponseData['data'][ResponseData['counter']]['lat']), lng: parseFloat(ResponseData['data'][ResponseData['counter']]['lon'])};
+            $('ajax-loader').hide();
+            $('#mapbox').show();
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: foundLatitude, lng: foundLongitude},
+              zoom: 15,
+              styles:  [{featureType: "all",stylers: [{ saturation: -100 }]}]
+            });
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map
+            });
+            var request = {
+                destination: end,
+                origin: start,
+                travelMode: google.maps.TravelMode.DRIVING
+              };
+            var directionsService = new google.maps.DirectionsService();
+              directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                  // Display the route on the map.
+                  directionsDisplay.setDirections(response);
+                }
+              });
+              $('#variablecategory').text($('#category').val());
+              $('#sellerlink').attr('href',ResponseData['data'][ResponseData['counter']]['url']);
+              globaldata['counter'] = ++ResponseData['counter'];
+              $('#seller').show();
+              $('#alternatives').show();
+
+        e.preventDefault();
+    });
+
+    $('#wronglocationlink').click(function (e) {
+        $('#mapbox').hide();
+        $('.optionals').show();
+        $('#location').val('').focus();
+        e.preventDefault();
+    });
 
 
 });

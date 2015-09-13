@@ -38,11 +38,22 @@
 			
 		</div>
 		<div id="alternatives">
-			
+			<div id="wronglocation" class="alternativelinks">
+				<a id="wronglocationlink" class="alternativehrefs">This is not my location !!</a>
+			</div>
+			<div id="anotherdealer" class="alternativelinks">
+				<a id="anotherdealerlink" class="alternativehrefs">Show another dealer ?</a>
+			</div>
+<!-- 			<div class="alternativelinks" id="reccomendations">
+				
+			</div> -->
 		</div>
 	</div>
 	<div id="noresults">
 		SORRY :( No Results. Try other <a href="/">location</a>
+	</div>
+	<div id="toomanyresults">
+		Bro ! you better go to <a href="http://quikr.com">Quikr</a>
 	</div>
 </body>
 	<script type="text/javascript" src="assets/scripts/script.js"></script>

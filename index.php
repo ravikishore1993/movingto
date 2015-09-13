@@ -75,7 +75,7 @@ $app->get('/category/:category/:city/:lta1/:lon1', function ($category,$city,$la
 		$docs=$data['AdsByCategoryResponse']['AdsByCategoryData']['docs'];
 		foreach ($docs as $i)
 		 {
-			if(array_key_exists('attribute_Ad_Type',$i) && array_key_exists('geo_pin',$i) && array_key_exists('title',$i) && array_key_exists('url',$i))
+			if(array_key_exists('attribute_Ad_Type',$i) && array_key_exists('geo_pin',$i) && array_key_exists('title',$i) && array_key_exists('url',$i) &&                           array_key_exists('verified_mobile',$i) && array_key_exists('ad_quality_score',$i))
 			{
 				$attribute_Ad_Typ=$i['attribute_Ad_Type'];
 				$geo_pin=$i['geo_pin'];
@@ -89,7 +89,7 @@ $app->get('/category/:category/:city/:lta1/:lon1', function ($category,$city,$la
 				$miles = $dist * 60 * 1.1515;
 			
 
-				if ($attribute_Ad_Typ=="offer" && $miles * 1.609344<=10) 
+				if ($attribute_Ad_Typ=="offer" && $miles * 1.609344<=10 && $i['verified_mobile']==1 && $i['ad_quality_score']>=6) 
 				{
 					$res=array();
 					$res["title"]=$i['title'];	
@@ -127,7 +127,7 @@ $app->get('/category/:category/:city/:lta1/:lon1', function ($category,$city,$la
 					$docs=$data['AdsByCategoryResponse']['AdsByCategoryData']['docs'];
 					foreach ($docs as $i)
 					 {
-						if(array_key_exists('attribute_Ad_Type',$i) && array_key_exists('geo_pin',$i) && array_key_exists('title',$i) && array_key_exists('url',$i))
+						if(array_key_exists('attribute_Ad_Type',$i) && array_key_exists('geo_pin',$i) && array_key_exists('title',$i) && array_key_exists('url',$i) &&               array_key_exists('verified_mobile',$i) && array_key_exists('ad_quality_score',$i))
 						{
 							$attribute_Ad_Typ=$i['attribute_Ad_Type'];
 							$geo_pin=$i['geo_pin'];
@@ -141,7 +141,7 @@ $app->get('/category/:category/:city/:lta1/:lon1', function ($category,$city,$la
 							$miles = $dist * 60 * 1.1515;
 						
 
-							if ($attribute_Ad_Typ=="offer" && $miles*1.609344 <=10) 
+							if ($attribute_Ad_Typ=="offer" && $miles*1.609344 <=10 && $i['verified_mobile']==1 && $i['ad_quality_score']>=6) 
 							{
 								$res=array();
 								$res["title"]=$i['title'];	
