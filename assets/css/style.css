@@ -18,7 +18,7 @@ body {
 
 #input-terms {
 	font-size: 100px;
-	margin: 30px auto;
+	margin: 30px auto 5px auto;
 	text-align: center;
 	color: #FFF;
 }
@@ -150,7 +150,7 @@ body {
 
 #seller {
 	display: none;
-	min-height: 100px;
+	min-height: 75px;
 	text-align: center;
 	font-size: 60px;
 	color: #fff;
