@@ -11,7 +11,7 @@
 		<div>
 			<span class="optionals">
 				<span>
-					<input type="text" id="category" placeholder="house">
+					<input type="text" id="category" placeholder="house" autofocus>
 				</span>
 				<span class="randomtext"> 
 					AT 
