@@ -11,7 +11,7 @@
 		<div>
 			<span class="optionals">
 				<span>
-					<input type="text" id="category">
+					<input type="text" id="category" placeholder="house">
 				</span>
 				<span class="randomtext"> 
 					AT 
